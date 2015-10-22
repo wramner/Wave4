@@ -21,7 +21,7 @@ namespace seb {
 	string nextString(vector<string> strVec);
 	string format(string pattern);
 	double nextNormal(double mean, double dev);
-	double nextNormal(double lb, double ub);
+	double nextUniform(double lb, double ub);
 	}
 }
 
