@@ -25,7 +25,7 @@ namespace seb {
 			string utstr = "";
 			random_device r;
 			uniform_int_distribution<> rect(0,9);
-			for (int i=0; i<instr.size();i++){
+			for (unsigned int i=0; i<instr.size();i++){
 				if (instr[i] == '#') {
 					utstr += to_string(rect(r));
 				} else {

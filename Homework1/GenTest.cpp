@@ -32,7 +32,7 @@ void testFormat() {
 	string instr {"ABC###"};
 	string utstr = format(instr);
 	assert(instr.size() == utstr.size());
-	for (int i=0; i<instr.size();i++){
+	for (unsigned int i=0; i<instr.size();i++){
 		if (instr[i] == '#') {
 			assert(isdigit(utstr[i]));
 		} else {
