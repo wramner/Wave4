@@ -37,6 +37,7 @@ void testSizeFunctions() {
 	string filename(tmpnam(NULL));
 	seb::io::text(filename, "storlekstest");
 	assert(seb::io::size(filename) == 12);
+	remove(filename.c_str());
 }
 
 
@@ -52,6 +53,7 @@ void testLoadStoreFunctions() {
 	SimpleRecord out_record;
 	seb::io::load(filename, 4, sizeof(out_record), (char*)&out_record);
 	assert( out_record.value == 4);
+	remove(filename.c_str());
 
 }
 
@@ -60,6 +62,8 @@ int main(int argc, char* argv[]) {
 	testLinesFunctions();
 	testSizeFunctions();
 	testLoadStoreFunctions();
+
+
 	cout << "All test completed." << endl;
 	return 0;
 }
