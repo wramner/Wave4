@@ -8,14 +8,27 @@
 #ifndef GENUTILS_HPP_
 #define GENUTILS_HPP_
 
+#include <vector>
+#include <string>
 
+using namespace std;
 
 namespace seb {
 
-	namespace str {
+	namespace gen {
 
+
+	string nextString(vector<string> strVec);
+	string format(string pattern);
+	double nextNormal(double mean, double dev);
+	double nextNormal(double lb, double ub);
 	}
 }
 
 
 #endif /* GENUTILS_HPP_ */
+
+/*
+ * "Kalle Anka #####-###"
+ * "Kalle Anka 16456-545"
+ */
