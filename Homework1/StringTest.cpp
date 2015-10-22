@@ -43,8 +43,10 @@ void left_should_work()
 	cout << "Testar funktionen left" << endl;
 	if (verbose) cout << "abcABC123_+(5) -> " << left("abcABC123_+", 5, 'P') << endl;
 	assert(left("abcABC123_+", 5, 'P') == "abcAB");
-	if (verbose) cout << "abcABC123_+(15)-> " << left("abcABC123_+", 15, 'P') << endl << endl;
+	if (verbose) cout << "abcABC123_+(15)-> " << left("abcABC123_+", 15, 'P') << endl;
 	assert(left("abcABC123_+", 15, 'P') == "abcABC123_+PPPP");
+	if (verbose) cout << "abcABC123_+(0)-> " << left("abcABC123_+", 0, 'P') << endl << endl;
+	assert(left("abcABC123_+", 0, 'P') == "");
 }
 
 void right_should_work()
@@ -71,29 +73,39 @@ void center_should_work()
 
 void split_should_work()
 {
-	vector<string> expected = {"Stefan","Mehran","Thomas"};
-	vector<string> v2;
+	vector<string> expected = {"Mehran","Stefan","Thomas"};
 
 	cout << "Testar funktionen split" << endl;
 	if (verbose)
 	{
 		cout << "Mehran,Stefan,Thomas" << endl;
 		for (auto s : split("Mehran,Stefan,Thomas", ',')) cout << ":" << s << endl;
+		cout << endl;
 	}
 	assert(split("Mehran,Stefan,Thomas", ',') == expected);
-	//v2 = split("Mehran,Stefan,Thomas", ',');
+}
+
+void join_should_work()
+{
+	vector<string> payload = {"Mehran","Stefan","Thomas"};
+
+	cout << "Testar funktionen join" << endl;
+	if (verbose) cout << "Mehran,Stefan,Thomas -> " << join(payload, ',') << endl << endl;
+	assert(join(payload, ',') == "Mehran,Stefan,Thomas");
 }
 
 int main()
 {
 	cout << "Testar våra stringfunktioner" << endl << endl;
-	/*lowercase_should_work();
+	lowercase_should_work();
 	uppercase_should_work();
 	truncate_should_work();
 	left_should_work();
 	right_should_work();
-	center_should_work();*/
+	center_should_work();
 	split_should_work();
+	join_should_work();
+	cout << "Alla tester klara" << endl;
 
 	return 0;
 }

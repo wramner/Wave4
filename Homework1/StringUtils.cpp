@@ -6,6 +6,7 @@
  */
 #include <cctype>
 #include <iostream>
+#include <sstream>
 #include "StringUtils.hpp"
 
 using namespace std;
@@ -67,30 +68,23 @@ namespace seb {
 
      vector<string> split		(const string& s, const char delim)
 	{
-    	 cout << "payload = '"<<s<<"', delim='"<<delim<<"'"<<endl;
-    	 vector<string> result;
-    	 size_t start = 0, end = start;
+    	 vector<string> internal;
+    	 stringstream tmp(s);
+    	 string tok;
 
-    	 string D = ""+delim;
-    	 while ((end = s.find(D, start) != string::npos))
-    	 //for (string::iterator it = s.begin(); it != s.end(); it++)
-    	 {
-    		 auto snippet = s.substr(start, end-start);
-    		 cout << "snippet = '"<<snippet<<"'"<<endl;
-    		 break;
-    		 result.push_back(snippet);
-    		 start = end + 1;
-    	 }
+    	 while (getline(tmp, tok, delim))
+    		 internal.push_back(tok);
 
-
-    	 return result;
+    	 return internal;
     }
 
      string 		join		(const vector<string>& v, const char sep)
      {
-    	 string s;
+    	 string tmp = "";
 
-    	 return s;
+    	 for (auto s : v) tmp = tmp + s + sep;
+
+    	 return left(tmp, tmp.length()-1, ' ');
      }
   }
 }
