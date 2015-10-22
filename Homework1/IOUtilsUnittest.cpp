@@ -33,12 +33,17 @@ void testLinesFunctions() {
 	remove(filename.c_str());
 }
 
+void testSizeFunctions() {
+	string filename(tmpnam(NULL));
+	seb::io::text(filename, "storlekstest");
+	assert(seb::io::size(filename) == 12);
+}
 
 int main(int argc, char* argv[]) {
 	testTextFunctions();
 	testLinesFunctions();
+	testSizeFunctions();
 	cout << "All test completed." << endl;
 	return 0;
 }
-
 

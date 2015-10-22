@@ -6,6 +6,7 @@
  */
 
 #include <fstream>
+#include <iostream>
 #include <algorithm>
 #include "IOUtils.hpp"
 using namespace std;
@@ -36,7 +37,12 @@ namespace seb {
 			ofstream file(filename);
 			for_each(content.begin(), content.end(), [&](string item) { file << item << endl;});
 		}
-//		int size(const string& filename);
+
+		int size(const string& filename) {
+			ifstream file(filename);
+			file.seekg(0, ios_base::end);
+			return file.tellg();
+		}
 //		void load(const string& filename, int idx, const int size, char* record);
 //		void store(const string& filename, int idx, const int size, char* record);
 
