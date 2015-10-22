@@ -1,7 +1,7 @@
 /* * StringTest.cpp
  *
  *  Created on: Oct 22, 2015
- *      Author: sebis
+ *      Author: Mehran, Stefan och Thomas
  */
 
 #include <iostream>

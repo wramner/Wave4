@@ -4,6 +4,7 @@
  *  Created on: Oct 22, 2015
  *      Author: Stefan, Mehran och Thomas
  */
+
 #include <cctype>
 #include <iostream>
 #include <sstream>
