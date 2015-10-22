@@ -73,13 +73,18 @@ void center_should_work()
 
 void split_should_work()
 {
-	vector<string> expected = {"Mehran","Stefan","Thomas"};
+	vector<string> expected =  {"Mehran","Stefan","Thomas"};
+	vector<string> expected2 = {"Alla ord utan avgränsare"};
 
 	cout << "Testar funktionen split" << endl;
 	if (verbose)
 	{
 		cout << "Mehran,Stefan,Thomas" << endl;
 		for (auto s : split("Mehran,Stefan,Thomas", ',')) cout << ":" << s << endl;
+		cout << "Alla ord utan avgränsare" << endl;
+		for (auto s : split("Alla ord utan avgränsare", ',')) cout << ":" << s << endl;
+		cout << ",börjar,med,en,avgränsare," << endl;
+		for (auto s : split(",börjar,med,en,avgränsare", ',')) cout << ":" << s << endl;
 		cout << endl;
 	}
 	assert(split("Mehran,Stefan,Thomas", ',') == expected);

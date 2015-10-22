@@ -41,18 +41,6 @@ namespace seb {
 
      string 		left		(const string& s, const int w, const char p)
      {
-    	 /*
-    	 if (s.length() >= w)
-    		 return s.substr(0, w);
-    	 else
-    	 {
-    		 string tmp = s;
-    		 for (auto i=s.length(); i<w; i++)
-    			 tmp += p;
-    		 return tmp;
-    	 }
-*/
-
     	 return (s.length() >= w) ? truncate(s, w) : s + string(w-s.length(), p);
 
      }
