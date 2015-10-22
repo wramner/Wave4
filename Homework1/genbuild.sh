@@ -1,5 +1,7 @@
+CXX="g++ -c -std=c++14 -Wall -fmax-errors=1"
+LNK="g++"
 set -x
 set -e
-g++ -std=c++14 -c GenUtils.cpp
-g++ -std=c++14 -c GenTest.cpp
-g++ -o GenTest GenTest.o GenUtils.o
+$CXX GenUtils.cpp
+$CXX GenTest.cpp
+$LNK -o GenTest GenTest.o GenUtils.o
