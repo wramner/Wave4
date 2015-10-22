@@ -39,13 +39,22 @@ namespace seb {
 		}
 
 		int size(const string& filename) {
-			ifstream file(filename);
+			ifstream file(filename, ios::in | ios::binary);
 			file.seekg(0, ios_base::end);
 			return file.tellg();
 		}
-//		void load(const string& filename, int idx, const int size, char* record);
-//		void store(const string& filename, int idx, const int size, char* record);
+		void load(const string& filename, int idx, const int size, char* record) {
+			fstream file(filename, ios::in | ios::binary);
+			file.seekg(idx * size, ios_base::beg);
+			file.read(record, size);
+		}
 
+		void store(const string& filename, int idx, const int size, char* record) {
+			fstream file(filename, ios::app | ios::out | ios::binary);
+			int index = idx * size;
+			file.seekp(index, ios_base::beg);
+			file.write(record, size);
+		}
 	}
 }
 

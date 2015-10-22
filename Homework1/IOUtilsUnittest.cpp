@@ -39,10 +39,27 @@ void testSizeFunctions() {
 	assert(seb::io::size(filename) == 12);
 }
 
+
+void testLoadStoreFunctions() {
+	struct SimpleRecord {
+		int value;
+	};
+	string filename(tmpnam(NULL));
+	for(int index=0;index<10; index++) {
+		SimpleRecord sr = {index};
+		seb::io::store(filename, index, sizeof(sr), (char*)&sr);
+	}
+	SimpleRecord out_record;
+	seb::io::load(filename, 4, sizeof(out_record), (char*)&out_record);
+	assert( out_record.value == 4);
+
+}
+
 int main(int argc, char* argv[]) {
 	testTextFunctions();
 	testLinesFunctions();
 	testSizeFunctions();
+	testLoadStoreFunctions();
 	cout << "All test completed." << endl;
 	return 0;
 }
