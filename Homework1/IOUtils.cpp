@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <unistd.h>
 #include "IOUtils.hpp"
 using namespace std;
 
@@ -50,7 +51,12 @@ namespace seb {
 		}
 
 		void store(const string& filename, int idx, const int size, char* record) {
+			int filesize = seb::io::size(filename);
+			if(filesize < (idx * size)) {
+				truncate(filename.c_str(), (idx*size));
+			}
 			fstream file(filename, ios::app | ios::out | ios::binary);
+
 			int index = idx * size;
 			file.seekp(index, ios_base::beg);
 			file.write(record, size);
