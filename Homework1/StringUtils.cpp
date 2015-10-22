@@ -33,26 +33,54 @@ namespace seb {
 
      string 		truncate	(const string& s, const int w)
      {
-    	 return s;
+    	 return s.substr(0, w);
      }
+
      string 		left		(const string& s, const int w, const char p)
      {
-    	 return s;
+    	 /*
+    	 if (s.length() >= w)
+    		 return s.substr(0, w);
+    	 else
+    	 {
+    		 string tmp = s;
+    		 for (auto i=s.length(); i<w; i++)
+    			 tmp += p;
+    		 return tmp;
+    	 }
+*/
+
+    	 return (s.length() >= w) ? truncate(s, w) : s + string(w-s.length(), p);
+
      }
+
      string 		right		(const string& s, const int w, const char p)
      {
-    	 return s;
+    	 return (s.length() >= w) ? s.substr(s.length()-w, s.length()) : string(w-s.length(), p) + s;
      }
+
      string 		center		(const string& s, const int w, const char p)
      {
-    	 return s;
+    	 return (s.length() >= w) ? s.substr((s.length()-w)/2,w) : string((w-s.length()+1)/2, 'P') + s + string((w-s.length())/2, 'P');
      }
+
      vector<string> split		(const string& s, const char delim)
-    		 {
+	{
     	 vector<string> v;
+    	 string tmp = s;
+    	 int pos = 0;
+    	 int found;
+
+    	 while ((found = tmp.find(delim, pos) != string::npos))
+    	 //for (string::iterator it = s.begin(); it != s.end(); it++)
+    	 {
+    		 v.push_back(left(tmp, found - 1, ' '));
+    		 pos = found + 1;
+    	 }
 
     	 return v;
-    		 }
+    }
+
      string 		join		(const vector<string>& v, const char sep)
      {
     	 string s;
