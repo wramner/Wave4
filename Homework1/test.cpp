@@ -12,6 +12,8 @@ using namespace std;
 int main() {
 	cout << "Jocke testar" << endl;
 	cout << "Även Stefan har testat" << endl;
+	cout << "och nu har Karl testat också" << endl;
+	cout << "och nu har RoPe testat också" << endl;
 	return 0;
 }
 
