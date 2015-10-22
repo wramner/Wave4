@@ -4,3 +4,5 @@
 *.so
 *.a
 *.out
+.project
+.cproject
