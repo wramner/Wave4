@@ -5,6 +5,7 @@
  *      Author: Stefan, Mehran och Thomas
  */
 #include <cctype>
+#include <iostream>
 #include "StringUtils.hpp"
 
 using namespace std;
@@ -66,19 +67,23 @@ namespace seb {
 
      vector<string> split		(const string& s, const char delim)
 	{
-    	 vector<string> v;
-    	 string tmp = s;
-    	 int pos = 0;
-    	 int found;
+    	 cout << "payload = '"<<s<<"', delim='"<<delim<<"'"<<endl;
+    	 vector<string> result;
+    	 size_t start = 0, end = start;
 
-    	 while ((found = tmp.find(delim, pos) != string::npos))
+    	 string D = ""+delim;
+    	 while ((end = s.find(D, start) != string::npos))
     	 //for (string::iterator it = s.begin(); it != s.end(); it++)
     	 {
-    		 v.push_back(left(tmp, found - 1, ' '));
-    		 pos = found + 1;
+    		 auto snippet = s.substr(start, end-start);
+    		 cout << "snippet = '"<<snippet<<"'"<<endl;
+    		 break;
+    		 result.push_back(snippet);
+    		 start = end + 1;
     	 }
 
-    	 return v;
+
+    	 return result;
     }
 
      string 		join		(const vector<string>& v, const char sep)
